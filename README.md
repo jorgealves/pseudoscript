@@ -38,6 +38,22 @@ primeiroElemento = minhaLista[0]
 minhaLista[2] = 42
 tamanhoDaLista = tamanho(minhaLista) # ou minhaLista.tamanho()
 
+# Orientação a Objetos (OOP)
+# Definição de Classe
+classe Pessoa:
+    construtor(nome, idade):
+        my.nome = nome
+        my.idade = idade
+
+    função apresentar():
+        retorne "Olá, meu nome é {my.nome} e tenho {my.idade} anos."
+
+# Criação de Instância de Objeto
+alice = Pessoa("Alice", 30)
+
+# Chamada Método do Objeto
+imprime(alice.apresentar()
+
 # Comentários
 # Este é um comentário de uma linha
 
