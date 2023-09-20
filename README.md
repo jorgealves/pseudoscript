@@ -48,11 +48,11 @@ imprime(carro['modelo'])
 # Definição de Classe
 modelo Pessoa:
     construtor(nome, idade):
-        e.nome = nome
-        e.idade = idade
+        Pessoa.nome = nome
+        Pessoa.idade = idade
 
     função apresentar():
-        retorne "Olá, meu nome é {e.nome} e tenho {e.idade} anos."
+        retorne "Olá, meu nome é {Pessoa.nome} e tenho {Pessoa.idade} anos."
 
 # Criação de Instância de Objeto
 alice = Pessoa("Alice", 30)
