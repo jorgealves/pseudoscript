@@ -28,8 +28,8 @@ enquanto [condição]:
     façaAlgo()
 
 # Funções
-função somar(a, b):
-    resultado = a + b
+função somar(a:numero, b:numero) -> numero:
+    resultado: numero = a + b
     retorne resultado
 
 # Listas
@@ -55,7 +55,7 @@ modelo Pessoa:
         retorne "Olá, meu nome é {Pessoa.nome} e tenho {Pessoa.idade} anos."
 
 # Criação de Instância de Objeto
-alice = Pessoa("Alice", 30)
+alice: Pessoa= Pessoa("Alice", 30)
 
 # Chamada Método do Objeto
 imprime(alice.apresentar()
