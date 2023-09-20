@@ -1,7 +1,7 @@
 # pseudoscript
 PseudoScript: Uma Linguagem de Programação para quem quer aprender lógica
 
-O PseudoScript é projetado para ser um ponto de partida para iniciantes. Após dominar seus conceitos, os estudantes podem fazer uma transição mais fácil para a programação real em JavaScript ou Python. Ele fornece uma base sólida em lógica, estruturas de controle e resolução de problemas sem sobrecarregar os iniciantes com uma sintaxe complexa.
+O PseudoScript é projetado para ser um ponto de partida para iniciantes. Após dominar os conceitos base, os aspirantes podem fazer uma transição mais fácil para a programação real em JavaScript ou Python. Ele fornece uma base sólida em lógica, estruturas de controlo e resolução de problemas sem sobrecarregar os iniciantes com uma sintaxe complexa.
 
 ```js
 # Variáveis são de tipagem dinâmica
@@ -38,15 +38,21 @@ primeiroElemento = minhaLista[0]
 minhaLista[2] = 42
 tamanhoDaLista = tamanho(minhaLista) # ou minhaLista.tamanho()
 
+#Objetos
+carro = (marca->'opel', modelo->'astra')
+imprime(carro.marca)
+imprime(carro['modelo'])
+
+
 # Orientação a Objetos (OOP)
 # Definição de Classe
-classe Pessoa:
+modelo Pessoa:
     construtor(nome, idade):
-        my.nome = nome
-        my.idade = idade
+        e.nome = nome
+        e.idade = idade
 
     função apresentar():
-        retorne "Olá, meu nome é {my.nome} e tenho {my.idade} anos."
+        retorne "Olá, meu nome é {e.nome} e tenho {e.idade} anos."
 
 # Criação de Instância de Objeto
 alice = Pessoa("Alice", 30)
