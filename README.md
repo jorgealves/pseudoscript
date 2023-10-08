@@ -3,7 +3,13 @@ PseudoScript: Uma Linguagem de Programação para quem quer aprender lógica
 
 O PseudoScript é projetado para ser um ponto de partida para iniciantes. Após dominar os conceitos base, os aspirantes podem fazer uma transição mais fácil para a programação real em JavaScript ou Python. Ele fornece uma base sólida em lógica, estruturas de controlo e resolução de problemas sem sobrecarregar os iniciantes com uma sintaxe complexa.
 
-```js
+```python
+
+# importar ficheiros(pacotes/Módulos)
+importar NOME_DO_FICHEIRO # importa tudo o que esteja dentro de um ficheiro
+importar NOME_DO_FICHEIRO como X # Importa tudo e considera como X
+# NOTA: Não precisa de adicionar a extensão do ficheiro.
+
 # Variáveis são de tipagem dinâmica
 nomeDaVariavel = "Olá, Mundo!"
 
@@ -15,9 +21,9 @@ imprime("Olá, " + nome)
 se [Condição]:
     # A indentação indica um bloco
     façaAlgo()
-senão [outra Condição]:
+senao [outra Condição]:
     façaAlgoDiferente()
-senão:
+senao:
     façaOutraCoisa()
 
 # Iterações (Loops)
@@ -28,8 +34,8 @@ enquanto [condição]:
     façaAlgo()
 
 # Funções
-função somar(a:numero, b:numero) -> numero:
-    resultado: numero = a + b
+funcao somar(a, b):
+    resultado = a + b
     retorne resultado
 
 # Listas
@@ -51,11 +57,11 @@ modelo Pessoa:
         Pessoa.nome = nome
         Pessoa.idade = idade
 
-    função apresentar():
+    funcao apresentar():
         retorne "Olá, meu nome é {Pessoa.nome} e tenho {Pessoa.idade} anos."
 
 # Criação de Instância de Objeto
-alice: Pessoa= Pessoa("Alice", 30)
+alice= Pessoa("Alice", 30)
 
 # Chamada Método do Objeto
 imprime(alice.apresentar()
@@ -70,7 +76,7 @@ múltiplas linhas
 */
 
 # Exemplo: Encontrando a soma dos números pares até n
-função somaDosPares(n):
+funcao somaDosPares(n):
     resultado = 0
     cada i em lista(1, n + 1):
         se i % 2 == 0:
@@ -81,8 +87,38 @@ função somaDosPares(n):
 função fatorial(n):
     se n == 0:
         retorne 1
-    senão:
+    senao:
         retorne n * fatorial(n - 1)
+
+```
+
+## Como correr um programa em pseudoscript
+Para correr um programa em pseudoscript apenas temos de considerar um ficheiro
+com o nome em maiúsculas (ex. MAIN ou INICIO ou ENTRYPOINT). Recomenda-se que o
+nome do ficheiro seja elucidativo de que é neste ficheiro que devemos iniciar o 
+nosso programa.
+
+Depois devemos colocar nesse ficeiro todo o codigo necessário para correr o 
+programa.
+
+```python
+# programa.pseudoscript
+
+modelo Programa:
+    
+    funcao start():
+        imprime('Olá Mundo!')
+
+```
+
+```python
+# INICIO.pseudoscript
+
+importar src/programa como MeuPrograma
+
+app = MeuPrograma.Programa()
+app.start()
+
 ```
 ## Principais Pontos:
 
