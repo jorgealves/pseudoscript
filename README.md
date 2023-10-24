@@ -44,10 +44,27 @@ primeiroElemento = minhaLista[0]
 minhaLista[2] = 42
 tamanhoDaLista = tamanho(minhaLista) # ou minhaLista.tamanho()
 
-#Objetos
-carro = (marca->'opel', modelo->'astra')
+# Mapas / Dicionario
+#        Chave    Valor
+#          |       |
+#          v       v
+carro = ('marca'->'opel', 'modelo'->'astra')
+# Aceder a um valor através da sua chave
 imprime(carro.marca)
 imprime(carro['modelo'])
+
+# iterar dicionario
+notas = ('Joao'-> 10, 'Joana' -> 12)
+cada chave, valor em notas
+    imprime('o aluno {chave} tem uma nota de {valor}')
+
+# iterar apenas as chaves
+cada chave em notas.chaves():
+    imprime(chave)
+
+# iterar apenas os valores:
+cada valor em chave.valores():
+    imprime(valor)
 
 
 # Orientação a Objetos (OOP)
