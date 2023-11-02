@@ -83,7 +83,7 @@ modelo Pessoa:
 alice= Pessoa("Alice", 30)
 
 # Chamada Método do Objeto
-imprime(alice.apresentar()
+imprime(alice.apresentar())
 
 # Comentários
 # Este é um comentário de uma linha
