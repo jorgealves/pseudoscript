@@ -17,6 +17,8 @@ nomeDaVariavel = "Olá, Mundo!"
 entrada("Diga seu nome: ", nome)
 imprime("Olá, " + nome)
 
+aleatorio() # gerar um número aleatório
+
 # Declarações Condicionais
 se [Condição]:
     # A indentação indica um bloco
