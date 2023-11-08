@@ -18,6 +18,7 @@ entrada("Diga seu nome: ", nome)
 imprime("Olá, " + nome)
 
 aleatorio() # gerar um número aleatório
+crash("Mensagem de erro que resultou um 'crash' do programa") # Esta função serve para reportar erros aplicacionais que originam no encerramento do programa
 
 # Declarações Condicionais
 se [Condição]:
