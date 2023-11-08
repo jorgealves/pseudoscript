@@ -15,6 +15,7 @@ nomeDaVariavel = "Olá, Mundo!"
 
 # Entrada e Saída
 entrada("Diga seu nome: ", nome)
+segredo("Password: ", password) # tem o mesmo propósito de 'entrada' mas ao escrever o utilizador não vê os caracteres (*******)
 imprime("Olá, " + nome)
 
 aleatorio() # gerar um número aleatório
