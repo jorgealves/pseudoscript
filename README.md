@@ -50,6 +50,7 @@ primeiroElemento = minhaLista[0]
 sublista = minhaLista[0:1] # [1,2]
 sublista2 = minhaLista[::3] # [1,2,3,4]
 subLista3 = minhalista[::-1] # [1,2,3,4]
+sublista4 = minhaLista[2::] # [3,4,5]
 minhaLista[2] = 42
 tamanhoDaLista = tamanho(minhaLista) # ou minhaLista.tamanho()
 minhaLista.adicionar(1) # [1,2,3,4,5,1]
