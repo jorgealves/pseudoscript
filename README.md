@@ -33,9 +33,11 @@ senao:
 # Iterações (Loops)
 cada elemento em lista:
     processeElemento(elemento)
+    continua() # Passa para o próximo ciclo
 
 enquanto [condição]:
     façaAlgo()
+    quebra() # sai do ciclo
 
 # Funções
 funcao somar(a, b):
