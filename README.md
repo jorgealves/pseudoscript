@@ -1,110 +1,158 @@
-# pseudoscript
-PseudoScript: Uma Linguagem de Programação para quem quer aprender lógica
+# PseudoScript: Uma Linguagem de Programação para quem quer aprender lógica
 
-O PseudoScript é projetado para ser um ponto de partida para iniciantes. Após dominar os conceitos base, os aspirantes podem fazer uma transição mais fácil para a programação real em JavaScript ou Python. Ele fornece uma base sólida em lógica, estruturas de controlo e resolução de problemas sem sobrecarregar os iniciantes com uma sintaxe complexa.
+O PseudoScript é projetado para ser um ponto de partida para iniciantes. Após dominar os conceitos básicos, os aspirantes podem fazer uma transição mais fácil para a programação real em JavaScript ou Python. Ele fornece uma base sólida em lógica, estruturas de controlo e resolução de problemas sem sobrecarregar os iniciantes com uma sintaxe complexa.
 
-```python
+## Importação de Módulos
+```
+importar NOME_DO_FICHEIRO  # Importa tudo o que está no ficheiro
+importar NOME_DO_FICHEIRO como X  # Importa e renomeia como X
+```
+## Tipos de Dados
+```
+idade = 25        # Inteiro
+altura = 1.75     # Float
+primeiraLetra = "a"  # Char
+nome = "João"     # Texto
+isEstudante = verdadeiro  # Booleano
+resultado = null  # Nulo (ausência de valor)
+```
+## Operadores Lógicos
+O PseudoScript permite o uso de operadores lógicos simples para criar expressões condicionais e controlar o fluxo do programa.
 
-# importar ficheiros(pacotes/Módulos)
-importar NOME_DO_FICHEIRO # importa tudo o que esteja dentro de um ficheiro
-importar NOME_DO_FICHEIRO como X # Importa tudo e considera como X
-# NOTA: Não precisa de adicionar a extensão do ficheiro.
+### Operadores de Comparação
+```
+a == b   # Igual a
+a != b   # Diferente de
+a > b    # Maior que
+a < b    # Menor que
+a >= b   # Maior ou igual a
+a <= b   # Menor ou igual a
+```
+### Operadores Lógicos
+```
+verdadeiro E falso  # Operador E (ambas as condições têm de ser verdadeiras)
+verdadeiro OU falso  # Operador OU (uma das condições tem de ser verdadeira)
+NÃO verdadeiro  # Operador NÃO (inversão do valor booleano)
+```
+### Operador de Contenção
+```
+elemento EM lista  # Verifica se o elemento está na lista
+```
 
-# Variáveis são de tipagem dinâmica
-nomeDaVariavel = "Olá, Mundo!"
+#### Exemplo de Uso
+```
+# Operadores Lógicos com E, OU e NÃO
+se idade >= 18 E isEstudante == verdadeiro:
+    imprime("Maior de idade e estudante.")
+senao se idade < 18 OU isEstudante == falso:
+    imprime("Menor de idade ou não é estudante.")
+senao:
+    imprime("Maior de idade.")
 
-# Entrada e Saída
-entrada("Diga seu nome: ", nome)
-segredo("Password: ", password) # tem o mesmo propósito de 'entrada' mas ao escrever o utilizador não vê os caracteres (*******)
-imprime("Olá, " + nome)
+# Operador EM
+lista = [1, 2, 3, 4, 5]
+se 3 EM lista:
+    imprime("O número 3 está na lista.")
+senao:
+    imprime("O número 3 não está na lista.")
 
-aleatorio() # gerar um número aleatório
-crash("Mensagem de erro que resultou um 'crash' do programa") # Esta função serve para reportar erros aplicacionais que originam no encerramento do programa
+# Operador NÃO
+se NÃO isEstudante:
+    imprime("Não é estudante.")
+```
 
-# Declarações Condicionais
+## Entrada e Saída
+```
+entrada("Digite o seu nome: ", nome)
+segredo("Palavra-passe: ", password)  # Entrada "segredo" oculta o valor digitado
+imprime("Olá, {nome}")
+```
+
+## Controlo de Fluxo
+### Condicionais
+```
 se [Condição]:
-    # A indentação indica um bloco
     façaAlgo()
 senao [outra Condição]:
     façaAlgoDiferente()
 senao:
     façaOutraCoisa()
-
-# Iterações (Loops)
+```
+### Iterações (Loops)
+```
 cada elemento em lista:
     processeElemento(elemento)
-    continua() # Passa para o próximo ciclo
+    continua()  # Passa para o próximo ciclo
 
 enquanto [condição]:
     façaAlgo()
-    quebra() # sai do ciclo
-
-# Funções
+    quebra()  # Sai do ciclo
+```
+### Funções e Listas
+```
+# Função
 funcao somar(a, b):
     resultado = a + b
     retorne resultado
 
-# Listas
+resultado = somar(2,2) # 4
+
+
+#Listas
 minhaLista = [1, 2, 3, 4, 5]
 primeiroElemento = minhaLista[0]
-sublista = minhaLista[0:1] # [1,2]
-sublista2 = minhaLista[::3] # [1,2,3,4]
-subLista3 = minhalista[::-1] # [1,2,3,4]
-sublista4 = minhaLista[2::] # [3,4,5]
-minhaLista[2] = 42
-tamanhoDaLista = tamanho(minhaLista) # ou minhaLista.tamanho()
-minhaLista.adicionar(1) # [1,2,3,4,5,1]
+sublista = minhaLista[0:1]  # [1, 2]
+ultimoElemento = minhaLista[-1] # 5
+sublistaAContarDoFim = minhaLista[1:-1] # [2,3,4]
+tamanhoDaLista = tamanho(minhaLista)  # Tamanho da lista
+minhaLista.adicionar(6)  # Adicionar elemento
+```
+## Dicionários (Mapas)
+```
+carro = ('marca' -> 'Opel', 'modelo' -> 'Astra')
 
-
-# Mapas / Dicionario
-#        Chave    Valor
-#          |       |
-#          v       v
-carro = ('marca'->'opel', 'modelo'->'astra')
-# Aceder a um valor através da sua chave
+# Aceder a valores
 imprime(carro.marca)
 imprime(carro['modelo'])
 
-# iterar dicionario
-notas = ('Joao'-> 10, 'Joana' -> 12)
-cada chave, valor em notas
-    imprime('o aluno {chave} tem uma nota de {valor}')
+# Operações com Dicionários
 
-# iterar apenas as chaves
-cada chave em notas.chaves():
-    imprime(chave)
+# Adicionar uma nova chave-valor
+carro['ano'] = 2020
 
-# iterar apenas os valores:
-cada valor em chave.valores():
-    imprime(valor)
-
-
-# Orientação a Objetos (OOP)
-# Definição de Classe
+# Iterar chaves e valores
+cada chave, valor em carro:
+    imprime("Chave: {chave}, Valor: {valor}")
+```
+## Orientação a Objetos (OOP)
+### Definição de Classes
+```
 modelo Pessoa:
     construtor(nome, idade):
         Pessoa.nome = nome
         Pessoa.idade = idade
 
     funcao apresentar():
-        retorne "Olá, meu nome é {Pessoa.nome} e tenho {Pessoa.idade} anos."
+        retorne "Olá, o meu nome é {Pessoa.nome} e tenho {Pessoa.idade} anos."
+```
+### Criação de Objetos e Herança
+```
+modelo Estudante extende Pessoa:
+    construtor(nome, idade, curso):
+        Estudante.nome = nome
+        Estudante.idade = idade
+        Estudante.curso = curso
 
-# Criação de Instância de Objeto
-alice= Pessoa("Alice", 30)
+    funcao apresentarCurso():
+        retorne "Estou no curso de {Estudante.curso}"
 
-# Chamada Método do Objeto
-imprime(alice.apresentar())
-
-# Comentários
-# Este é um comentário de uma linha
-
-/*
-Este é um
-comentário de
-múltiplas linhas
-*/
-
-# Exemplo: Encontrando a soma dos números pares até n
+# Criar instância e usar métodos
+alice = Estudante("Alice", 22, "Informática")
+imprime(alice.apresentar())  # Herança de Pessoa
+imprime(alice.apresentarCurso())  # Método de Estudante
+```
+## Exemplos de Algoritmos
+```
 funcao somaDosPares(n):
     resultado = 0
     cada i em lista(1, n + 1):
@@ -112,48 +160,24 @@ funcao somaDosPares(n):
             resultado = resultado + i
     retorne resultado
 
-# Exemplo: Fatorial
-função fatorial(n):
+funcao fatorial(n):
     se n == 0:
         retorne 1
     senao:
         retorne n * fatorial(n - 1)
-
 ```
-
-## Como correr um programa em pseudoscript
-Para correr um programa em pseudoscript apenas temos de considerar um ficheiro
-com o nome em maiúsculas (ex. MAIN ou INICIO ou ENTRYPOINT). Recomenda-se que o
-nome do ficheiro seja elucidativo de que é neste ficheiro que devemos iniciar o 
-nosso programa.
-
-Depois devemos colocar nesse ficeiro todo o codigo necessário para correr o 
-programa.
-
-```python
-# programa.pseudoscript
-
-modelo Programa:
-    
-    funcao start():
-        imprime('Olá Mundo!')
-
+# Como Executar um Programa em PseudoScript
+- Para executar um programa, crie um ficheiro com nome descritivo em letras maiúsculas como INICIO.pseudoscript.
 ```
-
-```python
 # INICIO.pseudoscript
-
 importar src/programa como MeuPrograma
 
 app = MeuPrograma.Programa()
 app.start()
-
 ```
-## Principais Pontos:
+# Pontos Principais
+Sintaxe Simplificada: Sintaxe minimalista para facilitar o aprendizado.
+Tipagem Dinâmica: As variáveis podem ter o seu tipo modificado conforme o contexto.
+Estruturas de Dados Simples: Listas, dicionários e funções básicas.
+Orientação a Objetos: Conceitos básicos de OOP, com herança e métodos.
 
-- Sintaxe Simplificada: O PseudoScript utiliza uma sintaxe simples com poucos símbolos e recuo. Ele emprega construções amigáveis para humanos como se, para, enquanto e função.
-- Tipagem Dinâmica: As variáveis são de tipagem dinâmica, facilitando o trabalho para iniciantes.
-- Entrada e Saída Simples: Entrada e saída são tratadas com comandos simples entrada e saída.
-- Comentários: O PseudoScript permite comentários de uma linha e de várias linhas para explicar o código.
-- Estruturas de Dados Básicas: Ele introduz conceitos básicos de listas (arrays) e funções.
-- Exemplos: Inclui funções de exemplo para ilustrar tarefas de programação comuns.
