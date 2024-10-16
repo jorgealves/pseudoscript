@@ -9,12 +9,12 @@ importar NOME_DO_FICHEIRO como X  # Importa e renomeia como X
 ```
 ## Tipos de Dados
 ```
-idade = 25        # Inteiro
-altura = 1.75     # Float
-primeiraLetra = "a"  # Char
-nome = "João"     # Texto
+idade = 25                # Inteiro
+altura = 1.75             # Float
+primeiraLetra = "a"       # Char
+nome = "João"             # Texto
 isEstudante = verdadeiro  # Booleano
-resultado = null  # Nulo (ausência de valor)
+resultado = null          # Nulo (ausência de valor)
 ```
 ## Operadores Lógicos
 O PseudoScript permite o uso de operadores lógicos simples para criar expressões condicionais e controlar o fluxo do programa.
@@ -30,9 +30,9 @@ a <= b   # Menor ou igual a
 ```
 ### Operadores Lógicos
 ```
-verdadeiro E falso  # Operador E (ambas as condições têm de ser verdadeiras)
+verdadeiro E falso   # Operador E (ambas as condições têm de ser verdadeiras)
 verdadeiro OU falso  # Operador OU (uma das condições tem de ser verdadeira)
-NÃO verdadeiro  # Operador NÃO (inversão do valor booleano)
+NÃO verdadeiro       # Operador NÃO (inversão do valor booleano)
 ```
 ### Operador de Contenção
 ```
@@ -156,7 +156,7 @@ imprime(alice.apresentarCurso())  # Método de Estudante
 funcao somaDosPares(n):
     resultado = 0
     cada i em lista(1, n + 1):
-        se i % 2 == 0:
+        se i % 2 == 0: # o simbolo % calcula o resto da divisão
             resultado = resultado + i
     retorne resultado
 
