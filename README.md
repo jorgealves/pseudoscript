@@ -123,6 +123,16 @@ carro['ano'] = 2020
 # Iterar chaves e valores
 cada chave, valor em carro:
     imprime("Chave: {chave}, Valor: {valor}")
+
+# Iterar apenas as chaves
+cada chave em carro.chaves():
+    imprime(chave)
+
+# Iterar apenas os valores
+cada valor em carro.valores():
+    imprime(valor)
+
+
 ```
 ## Orientação a Objetos (OOP)
 ### Definição de Classes
@@ -151,6 +161,12 @@ alice = Estudante("Alice", 22, "Informática")
 imprime(alice.apresentar())  # Herança de Pessoa
 imprime(alice.apresentarCurso())  # Método de Estudante
 ```
+## Métodos Auxiliares
+```
+aleatorio() # gera um número aleatório
+aleatorio(1,10) #gera um número aleatório entre 1 e 10
+```
+
 ## Exemplos de Algoritmos
 ```
 funcao somaDosPares(n):
