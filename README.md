@@ -3,12 +3,12 @@
 O PseudoScript é projetado para ser um ponto de partida para iniciantes. Após dominar os conceitos básicos, os aspirantes podem fazer uma transição mais fácil para a programação real em JavaScript ou Python. Ele fornece uma base sólida em lógica, estruturas de controlo e resolução de problemas sem sobrecarregar os iniciantes com uma sintaxe complexa.
 
 ## Importação de Módulos
-```
+```python
 importar NOME_DO_FICHEIRO  # Importa tudo o que está no ficheiro
 importar NOME_DO_FICHEIRO como X  # Importa e renomeia como X
 ```
 ## Tipos de Dados
-```
+```python
 idade = 25                # Inteiro
 altura = 1.75             # Float
 primeiraLetra = "a"       # Char
@@ -20,7 +20,7 @@ resultado = null          # Nulo (ausência de valor)
 O PseudoScript permite o uso de operadores lógicos simples para criar expressões condicionais e controlar o fluxo do programa.
 
 ### Operadores de Comparação
-```
+```python
 a == b   # Igual a
 a != b   # Diferente de
 a > b    # Maior que
@@ -29,18 +29,18 @@ a >= b   # Maior ou igual a
 a <= b   # Menor ou igual a
 ```
 ### Operadores Lógicos
-```
+```python
 verdadeiro E falso   # Operador E (ambas as condições têm de ser verdadeiras)
 verdadeiro OU falso  # Operador OU (uma das condições tem de ser verdadeira)
 NÃO verdadeiro       # Operador NÃO (inversão do valor booleano)
 ```
 ### Operador de Contenção
-```
+```python
 elemento EM lista  # Verifica se o elemento está na lista
 ```
 
 #### Exemplo de Uso
-```
+```python
 # Operadores Lógicos com E, OU e NÃO
 se idade >= 18 E isEstudante == verdadeiro:
     imprime("Maior de idade e estudante.")
@@ -62,7 +62,7 @@ se NÃO isEstudante:
 ```
 
 ## Entrada e Saída
-```
+```python
 entrada("Digite o seu nome: ", nome)
 segredo("Palavra-passe: ", password)  # Entrada "segredo" oculta o valor digitado
 imprime("Olá, {nome}")
@@ -70,7 +70,7 @@ imprime("Olá, {nome}")
 
 ## Controlo de Fluxo
 ### Condicionais
-```
+```python
 se [Condição]:
     façaAlgo()
 senao [outra Condição]:
@@ -79,7 +79,7 @@ senao:
     façaOutraCoisa()
 ```
 ### Iterações (Loops)
-```
+```python
 cada elemento em lista:
     processeElemento(elemento)
     continua()  # Passa para o próximo ciclo
@@ -89,7 +89,7 @@ enquanto [condição]:
     quebra()  # Sai do ciclo
 ```
 ### Funções e Listas
-```
+```python
 # Função
 funcao somar(a, b):
     resultado = a + b
@@ -108,7 +108,7 @@ tamanhoDaLista = tamanho(minhaLista)  # Tamanho da lista
 minhaLista.adicionar(6)  # Adicionar elemento
 ```
 ## Dicionários (Mapas)
-```
+```python
 carro = ('marca' -> 'Opel', 'modelo' -> 'Astra')
 
 # Aceder a valores
@@ -136,7 +136,7 @@ cada valor em carro.valores():
 ```
 ## Orientação a Objetos (OOP)
 ### Definição de Classes
-```
+```python
 modelo Pessoa:
     construtor(nome, idade):
         Pessoa.nome = nome
@@ -146,7 +146,7 @@ modelo Pessoa:
         retorne "Olá, o meu nome é {Pessoa.nome} e tenho {Pessoa.idade} anos."
 ```
 ### Criação de Objetos e Herança
-```
+```python
 modelo Estudante extende Pessoa:
     construtor(nome, idade, curso):
         Estudante.nome = nome
@@ -162,13 +162,13 @@ imprime(alice.apresentar())  # Herança de Pessoa
 imprime(alice.apresentarCurso())  # Método de Estudante
 ```
 ## Métodos Auxiliares
-```
+```python
 aleatorio() # gera um número aleatório
 aleatorio(1,10) #gera um número aleatório entre 1 e 10
 ```
 
 ## Exemplos de Algoritmos
-```
+```python
 funcao somaDosPares(n):
     resultado = 0
     cada i em lista(1, n + 1):
@@ -184,7 +184,7 @@ funcao fatorial(n):
 ```
 # Como Executar um Programa em PseudoScript
 - Para executar um programa, crie um ficheiro com nome descritivo em letras maiúsculas como INICIO.pseudoscript.
-```
+```python
 # INICIO.pseudoscript
 importar src/programa como MeuPrograma
 
