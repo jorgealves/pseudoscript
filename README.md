@@ -5,7 +5,7 @@ O PseudoScript é projetado para ser um ponto de partida para iniciantes. Após 
 <details>
     <summary>Escopo</summary>
 
-Escopo funcaoine a região do programa onde uma variável, função ou constante pode ser acessada e utilizada. É como uma "zona de visibilidade" para elementos do código.
+Escopo é a região do programa onde uma variável, função ou constante pode ser acedida e utilizada. É como uma "zona de visibilidade" para elementos do código.
 O escopo determina:
 
 - ✅ Onde uma variável pode ser usada
@@ -60,7 +60,13 @@ se verdadeiro:
     valor = 10  // Escopo de bloco
     imprime(valor)  // ✅ 10
 
-imprime(x)  // ❌ ERRO: x não está funcaoinida
+imprime(valor)  // ❌ ERRO: valor não está funcao
+---
+frase="Olá Mundo!"
+cada letra em frase:
+    imprime(letra) # ✅ Funciona
+imprime(letra)  // ❌ ERRO: Letra não está neste escopo
+
 ```
 
 </details>
@@ -75,68 +81,17 @@ funcao exemplo():
     se pontos:
         imprime(pontos)  # ✅ Acede 'pontos' da função
 
-    enquanto pontos >= 0:
+    repeticao = 20
+    enquanto repeticao >= 0:
         imprime(pontos)
-        repeticao = repeticao - 1  # ✅ Acede 'pontos' da função
+        repeticao = repeticao + 1  # ✅ Acede 'pontos' da função
 
 exemplo()  # Imprime 20 'vinte e uma' vezes
 ```
 
 </details>
-<details>
-    <summary>Exemplos Práticos Detalhados</summary>
 
-Exemplo 1: Escopo Local vs Global
 
-```python
-
-# Variável global
-
-titulo = "Programa Principal"
-
-funcao cumprimento():
-    # Variável local
-    nome = "João"
-    imprime(titulo)      # ✅ Acesso global
-    imprime(nome)        # ✅  local
-
-funcao despedida():
-    # Variável local diferente
-    nome = "Maria"
-    imprime(titulo)      # ✅  global
-    imprime(nome)        # ✅  local (de despedida)
-    # imprime(nome)      # ❌ Se tentasse acessar nome de cumprimento: ERRO
-
-cumprimento()   # Programa Principal / João
-despedida()     # Programa Principal / Maria
-```
-Exemplo 2: Shadowing (Obscurecimento)
-
-```python
-variavel = "Global"
-
-funcao funcao():
-    # Esta variável local "esconde" a global
-    variavel = "Local"
-    imprime(variavel)  # ✅ Imprime "Local"
-
-funcao()                # Local
-imprime(variavel)         # ✅ Global (não foi alterada)
-```
-
-Exemplo 3: Acessando Variáveis Globais Dentro de Função
-
-```python
-contador = 0
-
-funcao incrementar():
-    contador += 1
-    imprime(f"Contador: {contador}")
-
-incrementar()  # Contador: 1
-incrementar()  # Contador: 2
-imprime(contador)  # 2
-```
 
 ## Regra de Ouro: LEGB
 Em pseudoscript, a ordem de acesso a variáveis é (de dentro para fora):
@@ -167,6 +122,14 @@ Em pseudoscript, a ordem de acesso a variáveis é (de dentro para fora):
 <details>
     <summary>Importação de Módulos</summary>
 
+A importação de módulos é a forma recomendada de partilhar e reutilizar código em PseudoScript. 
+Um módulo pode exportar funções, variáveis e tipos; ao importar um módulo, trazes essas exportações para o contexto atual, mantendo o código modular e fácil de manter. 
+Tipicamente consegues:
+
+- importar um módulo completo;
+- importar só símbolos específicos (funções/constantes);
+- renomear (alias) módulos para evitar conflitos.
+
 ```python
 importar NOME_DO_FICHEIRO  # Importa tudo o que está no ficheiro
 importar NOME_DO_FICHEIRO como X  # Importa e renomeia como X
@@ -174,11 +137,22 @@ importar NOME_DO_FICHEIRO como X  # Importa e renomeia como X
 
 </details>
 
+<details>
+    <summary>Tipos de Dados</summary>
+    
+São a base para representar informação em PseudoScript. 
 
+Cada tipo define o formato dos valores, as operações válidas e frequentemente a forma como os valores são guardados em memória. 
 
-```python
+A documentação abaixo explica os tipos primitivos e compostos mais comuns e dá exemplos de uso.
 
-## Tipos de Dados
+### Tipos primitivos comuns
+
+- Inteiro (int): números sem parte decimal. Ex.: 0, 42, -7. Exemplo: `a = 10`
+- Decimal / Real / ponto flutuante (float): números com casas decimais. Ex.: 3.14, -0.5 Exemplo: `pi = 3.14`
+- Booleano (bool): verdadeiro ou falso — usado para condições. Exemplo: let ativo = true
+- Texto / string (string): sequência de caracteres. Exemplo: let nome = "Ana"
+- Nulo / indefinido (null / nil / undefined): representa ausência de valor. Exemplo: let resultado = null
 
 ```python
 idade = 25                # Inteiro
@@ -188,6 +162,27 @@ nome = "João"             # Texto (O Texto é considerado uma lista de caracter
 isEstudante = verdadeiro  # Booleano
 resultado = null          # Nulo (ausência de valor)
 ```
+
+### Tipos compostos
+
+- Lista / array: coleção ordenada de valores. Exemplo: `nums = [1, verdadeiro, 'olá']`
+- Dicionário / mapa: coleção de pares chave–valor. Exemplo: `pessoa = ('nome' -> "João", 'idade' -> 30)`
+
+```python
+# Lista
+notas = [15,16,16,17,17]
+
+# Dicionário / Mapa
+dicionario =(
+    'nome' -> 'John',
+    'apelido' -> 'Doe',
+    'idade' -> 27
+)
+```
+</details>
+
+<details>
+    <summary>Operadores Lógicos</summary>
 
 ## Operadores Lógicos
 
@@ -231,13 +226,17 @@ imprime(NAO Verdadeiro) # Falso. Neste caso pretende-se 'inverter' uma condiçã
 
 ### Operador de Contenção
 
+O operador de contenção testa se um elemento faz parte de uma coleção (lista, mapa — chaves ou valores) ou se uma substring está presente numa string, produzindo um booleano.
+
 ```python
 elemento EM lista  # Verifica se o elemento está na lista
 
 # Exemplos:
 lista = [1,2,3]
 numero = 4
-imprime(numero EM lista) # Falso. Pois o 4 não está contido na lista 
+imprime(numero EM lista) # Falso. Pois o 4 não está contido na lista
+
+imprime('Tóquio' EM 'Gosto de ir a Tóquio')  # Verdadeiro
 ```
 
 #### Exemplo de Uso
@@ -262,16 +261,55 @@ senao:
 se NÃO isEstudante:
     imprime("Não é estudante.")
 ```
+</details>
 
-## Entrada e Saída
+<details>
+    <summary>Entrada e Saída</summary>
+    
+- Entrada: obter dados de fontes externas — por exemplo teclado (prompt), ficheiros ou argumentos.
+```python
+entrada("Qual o seu nome? ", nome) # exporta o que o utilizador insere para a variavel 'nome'
+segredo("Password: ", password) # faz o mesmo que o 'entrada', porém oculta o que o utilizador insere (com '*****')
+```
+- Saída: mostrar resultados ao utilizador.
+```python
+imprime("Isto é para mostrar ao utilizador")
+```
+
+## Comportamento:
+- Leitura do teclado normalmente retorna uma string;
+- Impressão converte valores para texto e escreve no ecrã ou num ficheiro.
+
+## Interpolação de strings com `{…}`
+
+- Sintaxe: usar `{expressão}` dentro de uma string para inserir o valor resultante da expressão nessa posição.
+- Avalia a expressão e a converte para texto automaticamente.
+- Permite inserir variáveis, chamadas de função ou operações (ex.: {idade + 1}).
+- Vantagem: código mais limpo e legível comparado com concatenação manual.
+
+Exemplos:
 
 ```python
+# Leitura do teclado (retorna string)
+entrada("Qual é o teu nome?", nome)
+entrada("Qual a tua idade?", idade)
+
+# Saída com interpolação simples
+imprime("Olá, {nome}! Tens {idade} anos.")
+
+# Interpolação com expressão
+imprime("No próximo ano terás {idade + 1} anos.")
+
+# Escape de chaves (para mostrar { } literalmente)
+imprime("Usa {expressao} para interpolação; exemplo: {idade}")
+
 entrada("Digite o seu nome: ", nome)
 segredo("Palavra-passe: ", password)  # Entrada "segredo" oculta o valor digitado
 imprime("Olá, {nome}")
 ```
-
-## Controlo de Fluxo
+</details>
+<details>
+    <summary>Controlo de Fluxo</summary>
 
 ### Condicionais
 
@@ -301,8 +339,52 @@ enquanto [condição]:
     façaAlgo()
     quebra()  # Sai do ciclo
 ```
+<details>
+    <summary>Funções</summary>
+</details>
+São unidades independentes de lógica que recebem zero ou mais argumentos, executam operações e opcionalmente retornam um valor. 
 
-### Funções e Listas
+São a principal forma de modularizar programas e reutilizar código.
+
+Declaração e chamada:
+
+```python
+# Definição com retorno
+funcao soma(a, b):
+  retorna a + b
+
+r = soma(2, 3)   # r = 5
+
+# Definição sem retorno explícito (efeito/printing)
+funcao cumprimenta(nome) {
+  imprime("Olá, {nome}!")
+}
+cumprimenta("Ana")
+```
+
+Conceitos importantes
+
+- Parâmetros e argumentos: parâmetros são nomes na definição; argumentos são os valores passados.
+- Retorno: uma função pode usar `retorna` para devolver um valor;
+- Escopo: variáveis definidas dentro da função são locais e não visíveis fora dela.
+
+Recursão: funções podem chamar a si mesmas para resolver problemas divisíveis.
+
+Exemplos avançados 
+```python
+# Recursão: fatorial
+funcao fatorial(n):
+  se n <= 1:
+    retorna 1
+  retorna n * fatorial(n - 1)
+```
+
+### Boas práticas rápidas
+
+- Dá nomes descritivos às funções (verbo + complemento): ex.: calcular_imposto, ler_ficheiro.
+- Mantém funções pequenas e com responsabilidade única.
+- Documenta parâmetros e valores de retorno.
+- Evita efeitos colaterais inesperados; valida entradas antes de operar.
 
 ```python
 # Função
@@ -311,21 +393,118 @@ funcao somar(a, b):
     retorne resultado
 
 resultado = somar(2,2) # 4
-
-
-#Listas
-minhaLista = [1, 2, 3, 4, 5]
-primeiroElemento = minhaLista[0]
-sublista = minhaLista[0:1]  # [1, 2]
-ultimoElemento = minhaLista[-1] # 5
-sublistaAContarDoFim = minhaLista[1:-1] # [2,3,4]
-tamanhoDaLista = tamanho(minhaLista)  # Tamanho da lista
-minhaLista.adicionar(6)  # Adicionar elemento
 ```
+</details>
+<details>
+    <summary>Listas</summary>
 
-## Dicionários (Mapas)
+- Indexação: `lista[i]` dá o i-ésimo elemento (i começa em 0). índice -1 é o último.
+- Slicing / sublistas: `lista[start:end]` inclui elementos desde start até end-1 (fim exclusivo).
+    - Slices produzem normalmente uma nova lista (cópia).
+- Para verificar pertença, usa `em` (ex.: `3 em lista`).
+
+Explicação linha a linha (com correções)
 
 ```python
+# Listas
+minhaLista = [1, 2, 3, 4, 5]
+primeiroElemento = minhaLista[0]       # 1 (índice 0)
+sublista = minhaLista[1:2]             # [1, 2,3]  <-- corrigido: end é inclusivo
+ultimoElemento = minhaLista[-1]        # 5 (índice -1)
+sublistaAContarDoFim = minhaLista[1:-1]# [2, 3, 4]  (start=1, end=-1 => até o penúltimo)
+tamanhoDaLista = tamanho(minhaLista)   # 5 (existem 5 elementos no array)
+minhaLista.adicionar(6)                # [1,2,3,4,5,6]
+```
+### Regras importantes sobre slices (sublistas)
+
+- `start` é incluído, `end` é incluido. Ex.: lista[0:2] → elementos 0, 1 e 2.
+- Se omites `start`: `lista[:end]` começa em 0. Se omites `end`: `lista[start:]` vai até ao fim.
+- Se omites ambos: `lista[:]` faz uma cópia da lista inteira. O mesmo que `lista`
+- Índices fora de intervalo causam erro.
+- Slices criam uma nova lista (mutações na sublista não alteram a original).
+  
+#### Exemplos adicionais úteis
+
+```python
+minhaLista = [1,2,3,4,5]
+imprime(minhaLista[:2])    # [1, 2]  (do início até índice 1)
+imprime(minhaLista[2:])    # [3, 4, 5] (do índice 2 até ao fim)
+sub = minhaLista[0:3]
+sub[0] = 99                # altera só a sublista; não altera a original
+```
+
+### Boas práticas rápidas
+
+- Usa slice para extrair partes de uma lista sem escrever loops.
+- Documenta se funções aceitam/pedem sublistas ou conjuntos (comportamento esperado).
+  
+</details>
+<details>
+    <summary>Dicionários/Mapas</summary>
+- Estruturas chave→valor: cada chave associa-se a um único valor. Exemplos de uso: representar um registo de pessoa, contador por categoria, cache, ou JSON.
+
+Criação e acesso:
+
+```python
+# criar
+              Chave     Valor
+                |        |
+                v        v
+pessoa = ("nome"> "Ana", "idade"> 30}
+vazio = ()
+
+# acesso
+nome = pessoa["nome"]      # "Ana". Também podemos aceder, se soubermos a sua chave, `pessoa.nome`
+
+# inserir / atualizar
+pessoa["idade"] = 31
+pessoa["cidade"] = "Porto"
+
+# Métodos e operações comuns:
+
+em: verificar se uma chave existe (ex.: "nome" em pessoa).
+chaves(), valores(): iterar chaves, valores.
+tamanho(): obter número de items.
+```
+
+Exemplos de iteração e aninhamento
+
+```python
+# iterar chaves
+cada chave em pessoa.chaves():
+  imprime(chave)
+
+# iterar pares
+cada chave, valor em pessoa:
+  print("{chave}: {valor}")
+
+# mapas aninhados
+config = ("db"-> ("host"-> "localhost", "port"-> 5432))
+host = config["db"]["host"]
+```
+
+## Boas práticas
+
+- As chaves são SEMPRE únicas.
+- Usa comparações explícitas para evitar erros quando a chave não existir.
+- Documenta formato esperado (quais chaves existem e tipos dos valores).
+- Evita mutar um mapa enquanto o iteras; se precisares, itera sobre uma cópia das chaves.
+
+### Armadilha comum
+
+- Confundir verificar existência de chave com verificar valor truthy (chave pode existir com valor null/false).
+
+### Pequenos exemplos úteis
+
+```python
+# contador usando mapa
+contadores = ()
+cada item em lista:
+  se item em contadores:
+    contadores[item] = contadores[item] + 1
+    continua() # Passa para o próximo ciclo
+  contadores[item] = 1
+
 carro = ('marca' -> 'Opel', 'modelo' -> 'Astra')
 
 # Aceder a valores
@@ -348,13 +527,81 @@ cada chave em carro.chaves():
 # Iterar apenas os valores
 cada valor em carro.valores():
     imprime(valor)
+```
+</details>
 
+<details>
+    <summary>Modelos</summary>
 
+Modelos são o mecanismo da linguagem para definir tipos compostos com atributos (campos) e comportamentos (métodos). 
+
+Um modelo descreve a estrutura e as operações que as suas instâncias (objetos) terão.
+
+## Quando usar modelos
+- Para agrupar dados relacionados e operações sobre esses dados.
+- Para representar entidades do domínio (pessoas, contas, formas, etc.).
+- Para reutilizar e estender comportamentos através de herança.
+
+## Sintaxe básica
+
+### Definição de um modelo:
+```
+modelo NomeDoModelo:
+    construtor(param1, param2, ...):
+        NomeDoModelo.campo1 = param1
+        NomeDoModelo.campo2 = param2
+    funcao nomeMetodo():
+        retorne "algum valor"
+```
+- `modelo` inicia a definição.
+- `construtor(...)` é invocado quando se cria uma instância; deve inicializar os campos.
+- Os campos são atribuídos usando a notação `NomeDoModelo.campo`.
+- `funcao` define métodos que podem aceder aos campos do modelo com `NomeDoModelo.campo`.
+
+### Instanciação e uso:
+```
+instancia = NomeDoModelo(arg1, arg2)
+imprime(instancia.metodo())
+```
+## Exemplos explicados
+
+1) Modelo simples — Pessoa
+```
+modelo Pessoa:
+    construtor(nome, idade):
+        Pessoa.nome = nome
+        Pessoa.idade = idade
+
+    funcao apresentar():
+        retorne "Olá, o meu nome é {Pessoa.nome} e tenho {Pessoa.idade} anos."
+```
+- O construtor cria os campos `nome` e `idade`.
+- O método `apresentar` usa esses campos para devolver uma string.
+
+Uso:
+```
+alice = Pessoa("Alice", 30)
+imprime(alice.apresentar())
+
+# Saída esperada: Olá, o meu nome é Alice e tenho 30 anos.
 ```
 
-## Orientação a Objetos (OOP)
+## Boas práticas
+- Inicialize todos os campos necessários no `construtor`.
+- Use nomes de campos consistentes para evitar confusão entre pai e filho.
+- Quando estender um modelo, confirme se precisa inicializar campos do pai no construtor do filho.
+- Separe responsabilidades: mantenha métodos curtos e focados numa única ação.
 
-### funcaoinição de Classes
+## Armadilhas comuns
+- Esquecer de definir um campo no construtor e depois tentar usá-lo em métodos.
+- Contar com inicialização automática do construtor do pai quando a linguagem não a faz.
+- Usar nomes de campo idênticos sem intenção, levando a sobrescritas acidentais.
+
+## Resumo rápido
+- Modelos encapsulam dados e comportamentos.
+- `construtor(...)` cria e inicializa campos.
+- `funcao` define métodos que usam `NomeDoModelo.campo`.
+- `extende` permite herança; trate explicitamente a inicialização de campos herdados quando necessário.
 
 ```python
 modelo Pessoa:
@@ -366,49 +613,19 @@ modelo Pessoa:
         retorne "Olá, o meu nome é {Pessoa.nome} e tenho {Pessoa.idade} anos."
 ```
 
-### Criação de Objetos e Herança
 
-```python
-modelo Estudante extende Pessoa:
-    construtor(nome, idade, curso):
-        Estudante.nome = nome
-        Estudante.idade = idade
-        Estudante.curso = curso
-
-    funcao apresentarCurso():
-        retorne "Estou no curso de {Estudante.curso}"
-
-# Criar instância e usar métodos
-alice = Estudante("Alice", 22, "Informática")
-imprime(alice.apresentar())  # Herança de Pessoa
-imprime(alice.apresentarCurso())  # Método de Estudante
-```
-
-## Métodos Auxiliares
+</details> 
+<details>
+    <summary>Métodos Auxiliares</summary>
 
 ```python
 aleatorio() # gera um número aleatório
 aleatorio(1,10) #gera um número aleatório entre 1 e 10
 ```
+</details>
 
-## Exemplos de Algoritmos
-
-```python
-funcao somaDosPares(n):
-    resultado = 0
-    cada i em lista(1, n + 1):
-        se i % 2 == 0: # o simbolo % calcula o resto da divisão
-            resultado = resultado + i
-    retorne resultado
-
-funcao fatorial(n):
-    se n == 0:
-        retorne 1
-    senao:
-        retorne n * fatorial(n - 1)
-```
-
-# Como Executar um Programa em PseudoScript
+<details>
+    <summary>Como Executar um Programa em PseudoScript</summary>
 
 - Para executar um programa, crie um ficheiro com nome descritivo em letras maiúsculas como INICIO.pseudoscript.
 
@@ -419,10 +636,11 @@ importar src/programa como MeuPrograma
 app = MeuPrograma.Programa()
 app.start()
 ```
+</details>
 
 # Pontos Principais
 
-Sintaxe Simplificada: Sintaxe minimalista para facilitar o aprendizado.
-Tipagem Dinâmica: As variáveis podem ter o seu tipo modificado conforme o contexto.
-Estruturas de Dados Simples: Listas, dicionários e funções básicas.
-Orientação a Objetos: Conceitos básicos de OOP, com herança e métodos.
+- Sintaxe Simplificada: Sintaxe minimalista para facilitar o aprendizado.
+- Tipagem Dinâmica: As variáveis podem ter o seu tipo modificado conforme o contexto.
+- Estruturas de Dados Simples: Listas, dicionários e funções básicas.
+- Orientação a Objetos: Conceitos básicos de OOP, com herança e métodos.
